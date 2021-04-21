@@ -1,10 +1,16 @@
 import React from 'react'
 import propTypes from 'prop-types'
 
-const ButtonNum = ({ num }) => {
+const ButtonNum = ({ num, setInput }) => {
   const onClick = () => {
     const display = document.getElementById('display')
-    if (display.value.length < 9) display.value += num
+    if (display.value.length < 9) {
+      setInput((old) => {
+        const newVal = old + num
+        display.value = newVal
+        return newVal
+      })
+    }
   }
 
   return (
@@ -14,6 +20,7 @@ const ButtonNum = ({ num }) => {
 
 ButtonNum.propTypes = ({
   num: propTypes.number.isRequired,
+  setInput: propTypes.func.isRequired,
 })
 
 export default ButtonNum

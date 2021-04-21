@@ -1,9 +1,9 @@
 import React from 'react'
-import Calculator from '../Calculator/Calculator'
+import Calculator from '../Calculator'
 
 const App = () => (
   <div>
-    <Calculator num={1} />
+    <Calculator />
   </div>
 )
 
