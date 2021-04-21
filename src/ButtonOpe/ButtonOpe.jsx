@@ -6,25 +6,33 @@ const ButtonOpe = ({ operator, setCarry, setInput }) => {
     const display = document.getElementById('display')
     const c = parseInt(display.value, 10)
     setCarry((old) => {
+      let resultado = 0
       switch (old.operator) {
         case '+':
-          display.value = old.value + c
-          return { value: old.value + c, operator }
+          resultado = old.value + c
+          break
         case '*':
-          display.value = old.value * c
-          return { value: old.value * c, operator }
+          resultado = old.value * c
+          break
         case '-':
-          display.value = old.value - c
-          return { value: old.value - c, operator }
+          resultado = old.value - c
+          break
         case '%':
-          display.value = old.value % c
-          return { value: old.value % c, operator }
+          resultado = old.value % c
+          break
         default:
-          display.value = old.value
-          return { value: old.value, operator }
+          resultado = old.value
+          break
       }
+      if (resultado <= 999999999 && resultado >= 0) {
+        display.value = resultado
+        setInput('')
+        return { value: resultado, operator }
+      }
+      display.value = 'ERROR'
+      setInput('-1')
+      return -1
     })
-    setInput('')
   }
 
   return (

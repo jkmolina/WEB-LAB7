@@ -6,9 +6,12 @@ const ButtonNum = ({ num, setInput }) => {
     const display = document.getElementById('display')
     if (display.value.length < 9) {
       setInput((old) => {
-        const newVal = old + num
-        display.value = newVal
-        return newVal
+        if (old >= 0) {
+          const newVal = old + num
+          display.value = newVal
+          return newVal
+        }
+        return old
       })
     }
   }
