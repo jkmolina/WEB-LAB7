@@ -2,7 +2,7 @@ import React from 'react'
 import Calculator from '../Calculator'
 
 const App = () => (
-  <div>
+  <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '100px' }}>
     <Calculator />
   </div>
 )
